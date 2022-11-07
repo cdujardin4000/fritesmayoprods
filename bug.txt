@@ -1,0 +1,62 @@
+PS C:\xampp\htdocs\DYN\symfony-cli\frites-mayo-prods> php bin/console doctrine:fixtures:load
+
+ Careful, database "fritesmayoprods" will be purged. Do you want to continue? (yes/no) [no]:
+ > yes
+
+   > purging database
+   > loading App\DataFixtures\ActorFixtures
+   > loading App\DataFixtures\AppFixtures
+   > loading App\DataFixtures\CategoryFixtures
+2022-11-07T01:40:58+01:00 [info] User Deprecated: The "Symfony\Bridge\Doctrine\Logger\DbalLogger" class implements "Doctrine\DBAL\Logging\SQLLogger" that is deprecated Use {@see \Doctrine\DBAL\Logging\Middleware} or implement {@see \Doctrine\DBAL\Driver\Middleware}
+instead.
+PS C:\xampp\htdocs\DYN\symfony-cli\frites-mayo-prods> php bin/console doctrine:fixtures:load
+
+ Careful, database "fritesmayoprods" will be purged. Do you want to continue? (yes/no) [no]:
+ > yes
+
+   > purging database
+   > loading App\DataFixtures\ActorFixtures
+   > loading App\DataFixtures\AppFixtures
+   > loading App\DataFixtures\CategoryFixtures
+   > loading App\DataFixtures\MovieFixtures
+'L'idylle' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+Le lecteur spécifié est introuvable.
+Une erreur s’est produite lors du traitement de : au-dessus.
+Le lecteur spécifié est introuvable.
+Une erreur s’est produite lors du traitement de : d'un.
+Le lecteur spécifié est introuvable.
+Une erreur s’est produite lors du traitement de : nid.
+Le lecteur spécifié est introuvable.
+Une erreur s’est produite lors du traitement de : de.
+Le lecteur spécifié est introuvable.
+Une erreur s’est produite lors du traitement de : coucou.
+'Pour' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'Requiem' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'Pour' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'De' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'A' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'The' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'À' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'Fight' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'Insomniaque' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'The' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'Evan' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+[critical] Error thrown while running command "doctrine:fixtures:load". Message: "App\Entity\Movie::setDescription(): Argument #1 ($description) must be of type string, null given, called in C:\xampp\htdocs\DYN\symfony-cli\frites-mayo-prods\src\DataFixtures\MovieFix
+tures.php on line 93"
+
+In Movie.php line 74:
+                                                                                                                                                                                                                
+  App\Entity\Movie::setDescription(): Argument #1 ($description) must be of type string, null given, called in C:\xampp\htdocs\DYN\symfony-cli\frites-mayo-prods\src\DataFixtures\MovieFixtures.php on line 93  
+                                                                                                                                                                                                                
