@@ -96,8 +96,8 @@ class MovieFixtures extends Fixture implements DependentFixtureInterface
             $m->setCategory($this->getReference($movie['category']));
 
             foreach($movie['actors'] as $actor) {
-                $n =  explode(' ',$actor);
-                $m->addActor($this->getReference($actor[$n[1]]));
+
+                $m->addActor($this->getReference($actor));
             }
             $this-> addReference($movie['title'],$m);
 

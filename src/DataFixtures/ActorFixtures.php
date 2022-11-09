@@ -106,6 +106,7 @@ class ActorFixtures extends Fixture
             $a->setGender($actor['gender']);
             $a->setBirthDate(new DateTime($actor['birthDate']));
 
+            $this->addReference($actor['lastName'].' '.$actor['firstName'], $a);
             $manager->persist($a);
         }
 
