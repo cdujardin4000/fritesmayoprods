@@ -16,6 +16,14 @@
                 <td>{{ movie.title }}</td>
             </tr>
             <tr>
+                <th>Actors</th>
+                <td>
+                    {% for actor in movie.actors %}
+                        <a href="{{ path('app_actor_show', {'id': actor.id}) }}">{{ actor }}</a>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <th>ReleaseDate</th>
                 <td>{{ movie.releaseDate ? movie.releaseDate|date('Y-m-d') : '' }}</td>
             </tr>
