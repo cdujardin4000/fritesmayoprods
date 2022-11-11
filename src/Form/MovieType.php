@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Actor;
+use App\Entity\Category;
 use App\Entity\Movie;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,8 +19,33 @@ class MovieType extends AbstractType
             ->add('title')
             ->add('releaseDate')
             ->add('description')
-            ->add('actors')
-            ->add('category')
+            ->add('actors', EntityType::class, [
+                'class' => Actor::class,
+                'multiple' => true,
+                'expanded' => true,
+                /**'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('a')
+                        ->orderBy('a.name', 'asc');
+                },**/
+                'attr' => [
+                    'class' => 'select2'
+                ],
+                'choice_label' => function ($actor) {
+                    return $actor->__toString();
+                },
+                'by_reference' => false
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                /**'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'asc');
+                },**/
+                'attr' => [
+                    'class' => 'select2'
+                ],
+                'by_reference' => false
+            ])
         ;
     }
 

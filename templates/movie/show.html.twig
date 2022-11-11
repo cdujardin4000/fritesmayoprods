@@ -16,6 +16,10 @@
                 <td>{{ movie.title }}</td>
             </tr>
             <tr>
+                <th>Category</th>
+                <td><a href="{{ path('app_category_show', {'id': movie.category.id }) }}">{{ movie.category }}</a></td>
+            </tr>
+            <tr>
                 <th>Actors</th>
                 <td>
                     {% for actor in movie.actors %}

@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\ActorRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ActorRepository::class)]
@@ -34,7 +36,7 @@ class Actor
     private ?string $lastName = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $birthDate = null;
+    private ?DateTimeInterface $birthDate = null;
 
     #[ORM\Column(length: 1)]
     #[Assert\Choice(
@@ -43,12 +45,22 @@ class Actor
     )]
     private ?string $gender = null;
 
+    public string $name;
+
     #[ORM\ManyToMany(targetEntity: Movie::class, inversedBy: 'actors')]
     private Collection $movies;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->movies = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    #[Pure] public function getName(): string
+    {
+        return $this->__toString();
     }
 
     public function getId(): ?int
@@ -80,12 +92,12 @@ class Actor
         return $this;
     }
 
-    public function getBirthDate(): ?\DateTimeInterface
+    public function getBirthDate(): ?DateTimeInterface
     {
         return $this->birthDate;
     }
 
-    public function setBirthDate(?\DateTimeInterface $birthDate): self
+    public function setBirthDate(?DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
 

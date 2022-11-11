@@ -1,4 +1,9 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="row">
+        <div class="col">{{ form_row(form.firstName) }}</div>
+        <div class="col">{{ form_row(form.lastName) }}</div>
+    </div>
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn" type="submit">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

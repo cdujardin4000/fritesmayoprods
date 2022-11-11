@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
@@ -17,10 +19,10 @@ class Movie
     private ?int $id = null;
 
     #[ORM\Column(length: 60)]
-    private ?string $title = null;
+    public ?string $title = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $releaseDate = null;
+    private ?DateTimeInterface $releaseDate = null;
 
     #[ORM\Column(type: Types::TEXT, length: 255)]
     private ?string $description = null;
@@ -31,8 +33,13 @@ class Movie
     #[ORM\ManyToOne(inversedBy: 'movies')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+    public string $name;
 
-    public function __construct()
+    /**
+    #[ORM\Column(type: Types::TEXT, length: 60)]
+    private ?string $name = null;
+**/
+    #[Pure] public function __construct()
     {
         $this->actors = new ArrayCollection();
     }
@@ -42,7 +49,14 @@ class Movie
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function setName(string $title): static
+    {
+        $this->name = $title;
+
+        return $this;
+    }
+
+    public function getName(): ?string
     {
         return $this->title;
     }
@@ -54,12 +68,12 @@ class Movie
         return $this;
     }
 
-    public function getReleaseDate(): ?\DateTimeInterface
+    public function getReleaseDate(): ?DateTimeInterface
     {
         return $this->releaseDate;
     }
 
-    public function setReleaseDate(?\DateTimeInterface $releaseDate): self
+    public function setReleaseDate(?DateTimeInterface $releaseDate): self
     {
         $this->releaseDate = $releaseDate;
 
@@ -118,7 +132,8 @@ class Movie
     }
 
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 }

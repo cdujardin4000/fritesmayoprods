@@ -26,6 +26,7 @@ class ActorController extends AbstractController
     {
         $actor = new Actor();
         $form = $this->createForm(ActorType::class, $actor);
+        //dump($request);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

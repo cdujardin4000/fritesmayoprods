@@ -39,6 +39,22 @@ class MovieRepository extends ServiceEntityRepository
         }
     }
 
+    public function getLastMovies(int $max = 3): array
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT *
+            FROM App\Entity\Movie
+            ORDER BY releaseDate DESC
+            LIMIT :max'
+        )->setParameter('max', $max);
+
+        return $query->getResult();
+
+
+
+    }
 //    /**
 //     * @return Movie[] Returns an array of Movie objects
 //     */
