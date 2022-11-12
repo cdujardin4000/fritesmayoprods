@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
@@ -19,12 +20,16 @@ class Movie
     private ?int $id = null;
 
     #[ORM\Column(length: 60)]
-    public ?string $title = null;
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
+    public ?string $title;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?DateTimeInterface $releaseDate = null;
 
     #[ORM\Column(type: Types::TEXT, length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Actor::class, mappedBy: 'movies')]
@@ -35,10 +40,6 @@ class Movie
     private ?Category $category = null;
     public string $name;
 
-    /**
-    #[ORM\Column(type: Types::TEXT, length: 60)]
-    private ?string $name = null;
-**/
     #[Pure] public function __construct()
     {
         $this->actors = new ArrayCollection();

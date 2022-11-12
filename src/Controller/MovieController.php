@@ -17,7 +17,7 @@ use Doctrine\DBAL\Connection;
 class MovieController extends AbstractController
 {
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
-    public function index(MovieRepository $movieRepository, ActorRepository $ActorRepository): Response
+    public function index(MovieRepository $movieRepository): Response
     {
         //dd($ActorRepository->findAll());
         return $this->render('movie/index.html.twig', [
@@ -73,6 +73,7 @@ class MovieController extends AbstractController
         return $this->renderForm('movie/edit.html.twig', [
             'movie' => $movie,
             'form' => $form,
+            'by_reference' => true
         ]);
     }
 

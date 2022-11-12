@@ -8,6 +8,7 @@ use App\Entity\Movie;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +18,7 @@ class MovieType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('releaseDate')
+            ->add('releaseDate', BirthdayType::class)
             ->add('description')
             ->add('actors', EntityType::class, [
                 'class' => Actor::class,
@@ -44,7 +45,7 @@ class MovieType extends AbstractType
                 'attr' => [
                     'class' => 'select2'
                 ],
-                'by_reference' => false
+
             ])
         ;
     }

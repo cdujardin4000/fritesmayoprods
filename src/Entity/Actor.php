@@ -20,30 +20,36 @@ class Actor
     private ?int $id = null;
 
     #[ORM\Column(length: 60)]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     #[Assert\Length(
         min: 2,
         max: 60,
         minMessage: 'Vous devez fournir au moins 2 caractères',
     )]
-    private ?string $firstName = null;
+    private ?string $firstName;
 
     #[ORM\Column(length: 60)]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     #[Assert\Length(
         min: 2,
         max: 60,
         minMessage: 'Vous devez fournir au moins 2 caractères',
     )]
-    private ?string $lastName = null;
+    private ?string $lastName;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?DateTimeInterface $birthDate = null;
 
     #[ORM\Column(length: 1)]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
     #[Assert\Choice(
-        choices: ['h','f','x'],
+        choices: ['m','f','u'],
         message: '',
     )]
-    private ?string $gender = null;
+    private ?string $gender;
 
     public string $name;
 
